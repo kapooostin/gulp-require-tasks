@@ -8,6 +8,8 @@ const requireDirectory = require('require-directory');
 
 const DEFAULT_OPTIONS = {
   path: process.cwd() + '/gulp-tasks',
+  include: null,
+  exclude: null,
   separator: ':',
   passGulp: true,
   passCallback: true,
@@ -24,7 +26,9 @@ function gulpRequireTasks (options) {
   // Recursively visiting all modules in the specified directory
   // and registering Gulp tasks.
   requireDirectory(module, options.path, {
-    visit: moduleVisitor
+    visit: moduleVisitor,
+    include: options.include,
+    exclude: options.exclude
   });
 
 
