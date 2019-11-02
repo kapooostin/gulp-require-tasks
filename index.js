@@ -11,8 +11,6 @@ const DEFAULT_OPTIONS = {
   include: null,
   exclude: null,
   separator: ':',
-  passGulp: true,
-  passCallback: true,
   gulp: null,
   hooks: null
 };
@@ -76,31 +74,7 @@ function gulpRequireTasks (options) {
         return;
       }
 
-      let args = [];
-
-      // @deprecated
-      // @todo: remove this in 2.0.0
-      if (options.arguments) {
-        console.warn(
-          'Usage of "arguments" option is deprecated and will be removed in next major version. ' +
-          'Use globals or module imports instead.'
-        );
-        args = Array.from(options.arguments);
-      }
-
-      if (options.passGulp) {
-        args.unshift(gulp);
-      }
-
-      if (options.passCallback) {
-        args.push(callback);
-      }
-
-      if (options.hooks) {
-        args.push(hooks);
-      }
-
-      return module.fn.apply(module, args);
+      return module.fn.apply(module, [ gulp, options.hooks, callback ]);
 
     }
 

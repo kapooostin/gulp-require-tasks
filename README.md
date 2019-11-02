@@ -1,7 +1,5 @@
 # gulp-require-tasks
 
-[![npm version](https://badge.fury.io/js/gulp-require-tasks.svg)](http://badge.fury.io/js/gulp-require-tasks)
-
 
 This convenient module allows you to load *Gulp* tasks from the
 multiple individual files and directory hierarchy.
@@ -79,9 +77,10 @@ require('gulp-require-tasks')({
 | ------------ | ----------------- | --------------------------------------------------------
 | path         | `'./gulp-tasks'`  | Path to directory from which to load your tasks modules
 | separator    | `:`               | Task name separator, your tasks would be named, e.g. `foo:bar:baz` for `./tasks/foo/bar/baz.js`
-| passGulp     | `true`            | Whether to pass Gulp instance as a first argument to your task function
-| passCallback | `true`            | Whether to pass task callback function as a last argument to your task function
+| include      | `[]`              | Pattern to include files as tasks
+| exclude      | `[]`              | Pattern to ignore when looking for tasks
 | gulp         | `require('gulp')` | You could pass your existing Gulp instance if you have one, or it will be required automatically
+| hooks        | `null`            | `hooks` function passed to a task as the second argument
 
 
 ## Task module format
