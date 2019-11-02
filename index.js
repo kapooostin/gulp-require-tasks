@@ -13,7 +13,8 @@ const DEFAULT_OPTIONS = {
   separator: ':',
   passGulp: true,
   passCallback: true,
-  gulp: null
+  gulp: null,
+  hooks: null
 };
 
 
@@ -93,6 +94,10 @@ function gulpRequireTasks (options) {
 
       if (options.passCallback) {
         args.push(callback);
+      }
+
+      if (options.hooks) {
+        args.push(hooks);
       }
 
       return module.fn.apply(module, args);
